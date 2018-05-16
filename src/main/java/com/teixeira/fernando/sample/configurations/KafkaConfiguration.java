@@ -12,18 +12,17 @@ import org.springframework.kafka.listener.config.ContainerProperties;
 @Configuration
 public class KafkaConfiguration {
 
-    @Autowired
-    private KafkaProperties kafkaProperties;
+  @Autowired private KafkaProperties kafkaProperties;
 
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String>
-    kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
-                new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties()));
+  @Bean
+  public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+    ConcurrentKafkaListenerContainerFactory<String, String> factory =
+        new ConcurrentKafkaListenerContainerFactory<>();
+    factory.setConsumerFactory(
+        new DefaultKafkaConsumerFactory<>(kafkaProperties.buildConsumerProperties()));
 
-        ContainerProperties properties = factory.getContainerProperties();
-        properties.setErrorHandler(new CustomErrorHandler());
-        return factory;
-    }
+    ContainerProperties properties = factory.getContainerProperties();
+    properties.setErrorHandler(new CustomErrorHandler());
+    return factory;
+  }
 }

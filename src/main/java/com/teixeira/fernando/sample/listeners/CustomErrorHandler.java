@@ -8,8 +8,8 @@ import org.springframework.util.ObjectUtils;
 @Slf4j
 public class CustomErrorHandler implements ErrorHandler {
 
-    @Override
-    public void handle(Exception thrownException, ConsumerRecord<?, ?> data) {
-        log.error("Error while processing: " + ObjectUtils.nullSafeToString(data), thrownException);
-    }
+  @Override
+  public void handle(Exception thrownException, ConsumerRecord<?, ?> data) {
+    log.error("Error while processing: " + ObjectUtils.nullSafeToString(data), thrownException);
+  }
 }
