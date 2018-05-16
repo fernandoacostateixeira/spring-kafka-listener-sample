@@ -6,6 +6,9 @@ Sample project about Spring Kafka Listener using ErrorHandler if your listener t
 * Spring Boot
 * Spring Kafka
 
+##### Environment Requirements
+* Apache Kafka 0.10.2 local installation
+
 ##### Apache Kafka Commands
 Considering inside Apache Kafka install folder and /bin path
 
