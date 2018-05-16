@@ -1,15 +1,17 @@
 package com.teixeira.fernando.sample.listeners;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.kafka.listener.ErrorHandler;
+import org.springframework.kafka.listener.KafkaListenerErrorHandler;
+import org.springframework.kafka.listener.ListenerExecutionFailedException;
+import org.springframework.messaging.Message;
 import org.springframework.util.ObjectUtils;
 
 @Slf4j
-public class CustomErrorHandler implements ErrorHandler {
+public class CustomErrorHandler implements KafkaListenerErrorHandler {
 
   @Override
-  public void handle(Exception thrownException, ConsumerRecord<?, ?> data) {
-    log.error("Error while processing: " + ObjectUtils.nullSafeToString(data), thrownException);
+  public Object handleError(Message<?> message, ListenerExecutionFailedException exception) {
+    log.error("Error while processing: " + ObjectUtils.nullSafeToString(message), exception);
+    return message;
   }
 }

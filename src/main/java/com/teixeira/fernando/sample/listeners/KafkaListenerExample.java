@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListenerExample {
 
-  @KafkaListener(topics = "topic-example", containerFactory = "kafkaListenerContainerFactory")
+  @KafkaListener(topics = "topic-example", errorHandler = "customErrorHandler")
   public void execute(final GenericMessage<String> message) {
     log.info(
         "Reading offset: {} and message received: {}",
