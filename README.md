@@ -35,9 +35,10 @@ Considering inside Apache Kafka install folder and /bin path
 * Sending message
 ```
 ./kafka-console-producer.sh --broker-list localhost:9092 --topic topic-example
+messageExample
 ```
 * Sending message with key
 ```
 ./kafka-console-producer.sh --broker-list localhost:9092 --topic topic-example --property "parse.key=true" --property "key.separator=:"
-key1:message1
+keyExample:messageExample
 ```
